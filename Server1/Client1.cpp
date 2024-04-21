@@ -23,23 +23,8 @@ int main() {
 
     sockaddr_in hint{};
     hint.sin_family = AF_INET;
-    hint.sin_port = htons(54000); // Порт сервера
+    hint.sin_port = htons(54000); // ГЏГ®Г°ГІ Г±ГҐГ°ГўГҐГ°Г 
     inet_pton(AF_INET, "127.0.0.1", &hint.sin_addr);
-
-    bool connected = false;
-
-    while (!connected) {
-        
-        int connResult = connect(sock, (sockaddr*)&hint, sizeof(hint));
-        if (connResult == SOCKET_ERROR) {
-            std::cerr << "Can't connect to server! Retrying..." << std::endl;
-            Sleep(1000); 
-        }
-        else {
-            std::cout << "Connected to server!" << std::endl;
-            connected = true;
-        }
-    }
 
     char buf[4096];
     std::string userInput;
